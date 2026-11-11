@@ -47,7 +47,7 @@
 #header-component .lyss-mobile-menu {
   width: 100%;
   justify-content: center;
-  background: #c5a286;
+  background: transparent;
 }
 
 #header-component .lyss-mobile-menu .menu-list__list {
@@ -95,7 +95,7 @@
   min-height: 82px;
   padding: 0 clamp(1.25rem, 3.5vw, 3.5rem);
   border-top: 3px solid #fdc656;
-  background: #c5a286;
+  background: transparent;
   color: #fff;
 }
 

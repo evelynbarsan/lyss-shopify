@@ -38,7 +38,7 @@
         "actions_font_size": "0.875rem",
         "actions_font": "body",
         "actions_text_case": "none",
-        "background_color_top": "#c5a286",
+        "background_color_top": "#c5a28600",
         "text_color_top": "#ffffff",
         "text_color_transparent_home": "{{ settings.color_palette.background }}",
         "bubble_style": "default",

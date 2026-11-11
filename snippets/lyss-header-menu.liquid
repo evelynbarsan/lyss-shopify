@@ -1,3 +1,38 @@
+{%- liquid
+  assign link_class = ''
+  if variant == 'mobile'
+    assign link_class = 'menu-list__item lyss-mobile-menu__link'
+  endif
+-%}
+
+{%- capture home_link -%}
+  <a
+    href="{{ routes.root_url }}"
+    {% if link_class != blank %}
+      class="{{ link_class }}"
+    {% endif %}
+    {% if request.page_type == 'index' %}
+      aria-current="page"
+    {% endif %}
+  >
+    Início
+  </a>
+{%- endcapture -%}
+
+{%- capture catalog_link -%}
+  <a
+    href="{{ routes.all_products_collection_url }}"
+    {% if link_class != blank %}
+      class="{{ link_class }}"
+    {% endif %}
+    {% if request.page_type == 'collection' and collection.handle == 'all' %}
+      aria-current="page"
+    {% endif %}
+  >
+    Catálogo
+  </a>
+{%- endcapture -%}
+
 {% if variant == 'mobile' %}
   <div
     class="menu-list menu-list--mobile lyss-mobile-menu"
@@ -6,47 +41,17 @@
     <div class="menu-list__scroll-container">
       <ul class="menu-list__list list-unstyled" role="list">
         <li class="menu-list__list-item">
-          <a
-            href="{{ routes.root_url }}"
-            class="menu-list__item lyss-mobile-menu__link"
-            {% if request.page_type == 'index' %}
-              aria-current="page"
-            {% endif %}
-          >
-            Início
-          </a>
+          {{ home_link }}
         </li>
         <li class="menu-list__list-item">
-          <a
-            href="{{ routes.all_products_collection_url }}"
-            class="menu-list__item lyss-mobile-menu__link"
-            {% if request.page_type == 'collection' and collection.handle == 'all' %}
-              aria-current="page"
-            {% endif %}
-          >
-            Catálogo
-          </a>
+          {{ catalog_link }}
         </li>
       </ul>
     </div>
   </div>
 {% else %}
   <nav class="lyss-header-menu" aria-label="Navegação principal">
-    <a
-      href="{{ routes.root_url }}"
-      {% if request.page_type == 'index' %}
-        aria-current="page"
-      {% endif %}
-    >
-      Início
-    </a>
-    <a
-      href="{{ routes.all_products_collection_url }}"
-      {% if request.page_type == 'collection' and collection.handle == 'all' %}
-        aria-current="page"
-      {% endif %}
-    >
-      Catálogo
-    </a>
+    {{ home_link }}
+    {{ catalog_link }}
   </nav>
 {% endif %}
