@@ -1,0 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:names.header",
+  "sections": {
+    "header_section": {
+      "type": "header",
+      "settings": {
+        "logo_position": "left",
+        "menu_position": "center",
+        "menu_row": "top",
+        "customer_account_menu": "customer-account-main-menu",
+        "show_search": true,
+        "search_position": "right",
+        "search_row": "top",
+        "show_country": false,
+        "country_selector_style": true,
+        "show_language": false,
+        "localization_font": "body",
+        "localization_font_size": "0.875rem",
+        "localization_position": "right",
+        "localization_row": "top",
+        "section_width": "full-width",
+        "section_height": "standard",
+        "enable_sticky_header": "scroll-up",
+        "divider_width": 0,
+        "divider_size": "page-width",
+        "border_width": 0,
+        "actions_display_style": "icon",
+        "actions_font_size": "0.875rem",
+        "actions_font": "body",
+        "actions_text_case": "none",
+        "background_color_top": "#c5a286",
+        "text_color_top": "#ffffff",
+        "text_color_transparent_home": "{{ settings.color_palette.background }}",
+        "bubble_style": "default",
+        "enable_transparent_header_home": false,
+        "home_inverse_logo": false,
+        "enable_transparent_header_product": false,
+        "product_inverse_logo": false,
+        "enable_transparent_header_collection": false,
+        "collection_inverse_logo": false
+      }
+    }
+  },
+  "order": ["header_section"]
+}

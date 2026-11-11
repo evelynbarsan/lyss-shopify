@@ -1,0 +1,179 @@
+#header-component .header__row--top {
+  border-top: 3px solid #fdc656;
+}
+
+#header-component .header__column--right {
+  gap: clamp(0.5rem, 1.5vw, 1.5rem);
+}
+
+#header-component .lyss-header-logo {
+  display: inline-flex;
+  width: 92px;
+  height: 54px;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+  padding: 0;
+}
+
+#header-component .lyss-header-logo__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(0) brightness(2);
+  object-fit: contain;
+}
+
+#header-component .lyss-header-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  white-space: nowrap;
+}
+
+#header-component .lyss-header-menu a {
+  color: currentColor;
+  font: inherit;
+  text-decoration: none;
+}
+
+#header-component .lyss-header-menu a:hover,
+#header-component .lyss-header-menu a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+#header-component .lyss-mobile-menu {
+  width: 100%;
+  justify-content: center;
+  background: #c5a286;
+}
+
+#header-component .lyss-mobile-menu .menu-list__list {
+  gap: 1.5rem;
+  padding: 0.25rem 1rem;
+}
+
+#header-component .lyss-mobile-menu .menu-list__list-item {
+  padding-block: 0.5rem;
+}
+
+#header-component .lyss-mobile-menu__link {
+  color: #fff;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+#header-component .lyss-mobile-menu__link:hover,
+#header-component .lyss-mobile-menu__link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+#header-component .lyss-mobile-menu__link[aria-current='page'] {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+@media screen and (max-width: 749px) {
+  #header-component .lyss-header-menu {
+    display: none;
+  }
+
+  #header-component .header__drawer {
+    display: none;
+  }
+}
+
+.lyss-preview-header {
+  position: relative;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  min-height: 82px;
+  padding: 0 clamp(1.25rem, 3.5vw, 3.5rem);
+  border-top: 3px solid #fdc656;
+  background: #c5a286;
+  color: #fff;
+}
+
+.lyss-preview-header__logo {
+  display: flex;
+  width: 92px;
+  height: 54px;
+  align-items: center;
+}
+
+.lyss-preview-header__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(0) brightness(2);
+}
+
+.lyss-preview-header__menu,
+.lyss-preview-header__actions {
+  display: flex;
+  align-items: center;
+}
+
+.lyss-preview-header__menu {
+  justify-content: center;
+  gap: clamp(1.25rem, 3vw, 3rem);
+}
+
+.lyss-preview-header__menu a,
+.lyss-preview-header__actions a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lyss-preview-header__actions {
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.lyss-preview-header__actions svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+@media screen and (max-width: 749px) {
+  .lyss-preview-header {
+    grid-template-columns: 44px 1fr auto;
+    min-height: 70px;
+    padding-inline: 1rem;
+  }
+
+  .lyss-preview-header__logo {
+    grid-column: 2;
+    justify-self: center;
+    width: 82px;
+    height: 48px;
+  }
+
+  .lyss-preview-header__menu {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    min-height: 42px;
+  }
+
+  .lyss-preview-header__actions {
+    grid-column: 3;
+    grid-row: 1;
+    gap: 0.75rem;
+  }
+
+  .lyss-preview-header__actions svg {
+    width: 20px;
+    height: 20px;
+  }
+}
