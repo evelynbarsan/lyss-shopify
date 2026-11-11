@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Contato",
+    "settings": [
+      {
+        "type": "text",
+        "id": "whatsapp_number",
+        "label": "Número do WhatsApp (com código do país)",
+        "default": "5547988185859"
+      },
+      {
+        "type": "textarea",
+        "id": "whatsapp_message",
+        "label": "Mensagem inicial do WhatsApp",
+        "default": "Olá! Vim pelo anúncio do google ads e quero saber mais!"
+      }
+    ]
+  }
+]

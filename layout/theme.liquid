@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif -%}
+      {%- if current_page != 1 %} &ndash; Página {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+    <link rel="canonical" href="{{ canonical_url }}">
+    <style>
+      .skip-to-content-link {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      .skip-to-content-link:focus {
+        left: 1rem;
+        top: 1rem;
+        width: auto;
+        height: auto;
+        z-index: 1000;
+        padding: 1rem;
+        background: #fff;
+        color: #000;
+      }
+    </style>
+    {{ 'lyss-landing.css' | asset_url | stylesheet_tag }}
+    <style>
+      :root {
+        --sf-img-14: url("{{ 'lyss-image-04.webp' | asset_url }}");
+      }
+    </style>
+    {{ content_for_header }}
+  </head>
+  <body>
+    <a class="skip-to-content-link" href="#MainContent">Pular para o conteúdo</a>
+    <main id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+  </body>
+</html>
