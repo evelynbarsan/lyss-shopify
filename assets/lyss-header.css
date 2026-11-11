@@ -1,5 +1,6 @@
 #header-component .header__row--top {
   border-top: 3px solid #fdc656;
+  color: #fff;
 }
 
 #header-component .header__column--right {
@@ -24,22 +25,28 @@
   object-fit: contain;
 }
 
-#header-component .lyss-header-menu {
+#header-component .lyss-header-menu,
+.lyss-preview-header .lyss-header-menu {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: clamp(1.25rem, 3vw, 3rem);
+  font-size: 1.4rem;
+  line-height: 1.5;
   white-space: nowrap;
 }
 
-#header-component .lyss-header-menu a {
+#header-component .lyss-header-menu a,
+.lyss-preview-header .lyss-header-menu a {
   color: currentColor;
   font: inherit;
   text-decoration: none;
 }
 
 #header-component .lyss-header-menu a:hover,
-#header-component .lyss-header-menu a:focus-visible {
+#header-component .lyss-header-menu a:focus-visible,
+.lyss-preview-header .lyss-header-menu a:hover,
+.lyss-preview-header .lyss-header-menu a:focus-visible {
   text-decoration: underline;
   text-underline-offset: 0.25em;
 }
@@ -47,7 +54,8 @@
 #header-component .lyss-mobile-menu {
   width: 100%;
   justify-content: center;
-  background: transparent;
+  background: rgba(51, 51, 51, 0.05);
+  color: #fff;
 }
 
 #header-component .lyss-mobile-menu .menu-list__list {
@@ -60,8 +68,9 @@
 }
 
 #header-component .lyss-mobile-menu__link {
-  color: #fff;
-  font-size: 0.95rem;
+  color: inherit;
+  font-size: 1.4rem;
+  line-height: 1.5;
   text-decoration: none;
 }
 
@@ -87,7 +96,8 @@
 }
 
 .lyss-preview-header {
-  position: relative;
+  position: absolute;
+  inset: 0 0 auto;
   z-index: 20;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -95,7 +105,7 @@
   min-height: 82px;
   padding: 0 clamp(1.25rem, 3.5vw, 3.5rem);
   border-top: 3px solid #fdc656;
-  background: transparent;
+  background: rgba(51, 51, 51, 0.05);
   color: #fff;
 }
 
@@ -113,18 +123,11 @@
   filter: saturate(0) brightness(2);
 }
 
-.lyss-preview-header__menu,
 .lyss-preview-header__actions {
   display: flex;
   align-items: center;
 }
 
-.lyss-preview-header__menu {
-  justify-content: center;
-  gap: clamp(1.25rem, 3vw, 3rem);
-}
-
-.lyss-preview-header__menu a,
 .lyss-preview-header__actions a {
   color: inherit;
   text-decoration: none;
@@ -160,7 +163,7 @@
     height: 48px;
   }
 
-  .lyss-preview-header__menu {
+  .lyss-preview-header .lyss-header-menu {
     grid-column: 1 / -1;
     grid-row: 2;
     min-height: 42px;
