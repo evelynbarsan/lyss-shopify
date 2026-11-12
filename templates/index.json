@@ -2,6 +2,118 @@
   "sections": {
     "main": {
       "type": "landing-page",
+      "blocks": {
+        "hero_bg": { "type": "hero_background", "settings": {} },
+        "hero_art": { "type": "hero_art", "settings": {} },
+        "collection_bg": { "type": "collection_background", "settings": {} },
+        "collection_art": { "type": "collection_art", "settings": {} },
+        "audience_bg": { "type": "audience_background", "settings": {} },
+        "audience_1": {
+          "type": "audience_item",
+          "settings": { "title": "Turmas de faculdade da área da saúde" }
+        },
+        "audience_2": { "type": "audience_item", "settings": { "title": "Clínicas médicas" } },
+        "audience_3": { "type": "audience_item", "settings": { "title": "Clínicas veterinárias" } },
+        "audience_4": {
+          "type": "audience_item",
+          "settings": { "title": "Clínicas de estética e beleza" }
+        },
+        "feature_pattern": { "type": "feature_pattern", "settings": {} },
+        "benefit_1": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Modelagem moderna",
+            "description": "Peças que valorizam o corpo, sem o modelo tradicional."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Personalização",
+            "description": "Peças com nome, profissão ou logomarca da clínica"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Variedade",
+            "description": "Modelos e cores para todos os estilos."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Atendimento direto",
+            "description": "Contato próximo, do orçamento à entrega, pelo WhatsApp."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Atacado",
+            "description": "Condições especiais para pedidos em maior quantidade."
+          }
+        },
+        "step_1": {
+          "type": "step_item",
+          "settings": {
+            "title": "Entre em contato pelo WhatsApp",
+            "description": "Fale diretamente com a Lyss Jalecos para iniciar o seu pedido."
+          }
+        },
+        "step_2": {
+          "type": "step_item",
+          "settings": {
+            "title": "Conte os detalhes",
+            "description": "Informe a turma, clínica ou o tipo de peça desejada."
+          }
+        },
+        "step_3": {
+          "type": "step_item",
+          "settings": {
+            "title": "Receba seu orçamento",
+            "description": "Aprovado o orçamento, sua encomenda entra em produção."
+          }
+        },
+        "gallery_1": { "type": "gallery_image", "settings": {} },
+        "gallery_2": { "type": "gallery_image", "settings": {} },
+        "gallery_3": { "type": "gallery_image", "settings": {} },
+        "gallery_4": { "type": "gallery_image", "settings": {} },
+        "gallery_5": { "type": "gallery_image", "settings": {} },
+        "gallery_6": { "type": "gallery_image", "settings": {} },
+        "gallery_7": { "type": "gallery_image", "settings": {} },
+        "cta_art": { "type": "cta_art", "settings": {} },
+        "final_art": { "type": "final_art", "settings": {} }
+      },
+      "block_order": [
+        "hero_bg",
+        "hero_art",
+        "collection_bg",
+        "collection_art",
+        "audience_bg",
+        "audience_1",
+        "audience_2",
+        "audience_3",
+        "audience_4",
+        "feature_pattern",
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "step_1",
+        "step_2",
+        "step_3",
+        "gallery_1",
+        "gallery_2",
+        "gallery_3",
+        "gallery_4",
+        "gallery_5",
+        "gallery_6",
+        "gallery_7",
+        "cta_art",
+        "final_art"
+      ],
       "settings": {}
     }
   },

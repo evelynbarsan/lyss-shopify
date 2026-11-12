@@ -1,22 +1,58 @@
 {%- assign whatsapp_phone = settings.whatsapp_number | default: '5547988185859' | remove: '+' | remove: ' ' | remove: '-' -%}
 {%- assign whatsapp_message = settings.whatsapp_message | default: 'Olá! Vim pelo anúncio do google ads e quero saber mais!' | url_encode -%}
 {%- assign whatsapp_url = 'https://wa.me/' | append: whatsapp_phone | append: '?text=' | append: whatsapp_message -%}
-<div id=site>
+{%- assign hero_background = section.blocks | where: 'type', 'hero_background' | first -%}
+{%- assign hero_art = section.blocks | where: 'type', 'hero_art' | first -%}
+{%- assign collection_background = section.blocks | where: 'type', 'collection_background' | first -%}
+{%- assign collection_art = section.blocks | where: 'type', 'collection_art' | first -%}
+{%- assign audience_background = section.blocks | where: 'type', 'audience_background' | first -%}
+{%- assign cta_art = section.blocks | where: 'type', 'cta_art' | first -%}
+{%- assign final_art = section.blocks | where: 'type', 'final_art' | first -%}
+{%- assign feature_pattern = section.blocks | where: 'type', 'feature_pattern' | first -%}
+{%- assign audience_items = section.blocks | where: 'type', 'audience_item' -%}
+{%- assign benefit_items = section.blocks | where: 'type', 'benefit_item' -%}
+{%- assign step_items = section.blocks | where: 'type', 'step_item' -%}
+{%- assign gallery_images = section.blocks | where: 'type', 'gallery_image' -%}
+{%- assign benefit_1 = benefit_items[0] -%}
+{%- assign benefit_2 = benefit_items[1] -%}
+{%- assign benefit_3 = benefit_items[2] -%}
+{%- assign benefit_4 = benefit_items[3] -%}
+{%- assign benefit_5 = benefit_items[4] -%}
+{%- assign step_1 = step_items[0] -%}
+{%- assign step_2 = step_items[1] -%}
+{%- assign step_3 = step_items[2] -%}
+{%- assign hero_button_url = section.settings.hero_button_url | default: whatsapp_url -%}
+{%- assign collection_button_url = section.settings.collection_button_url | default: routes.all_products_collection_url -%}
+{%- assign audience_button_url = section.settings.audience_button_url | default: routes.all_products_collection_url -%}
+{%- assign cta_button_url = section.settings.cta_button_url | default: whatsapp_url -%}
+<div
+  id=site
+  {% if feature_pattern.settings.image != blank %}
+    style="--sf-img-14: url('{{ feature_pattern.settings.image | image_url: width: 1536 }}')"
+  {% endif %}
+>
   <div class="gp-page gp-design-root">
-    <div id=b_3647728_1_mubnss3ffdqmds6a9e class="block gpc-b gpr14">
+    <div
+      id=b_3647728_1_mubnss3ffdqmds6a9e
+      class="block gpc-b gpr14"
+      {% if hero_background.settings.image != blank %}
+        style="--sf-img-0: url('{{ hero_background.settings.image | image_url: width: 2400 }}')"
+      {% endif %}
+      {{ hero_background.shopify_attributes }}
+    >
       <div class=overlay style=background:var(--g-color-primary);opacity:0></div>
       <div class="center centralizar">
         <div
           id=e_3647728_1_179002020522660889
           class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179002020522660889 gpr1"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:left;text-shadow:none;opacity:1><h2 class=gpr2>Estilo e atitude para quem veste a própria profissão.</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:left;text-shadow:none;opacity:1><h2 class=gpr2>{{ section.settings.hero_heading | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179002315894121373
           class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179002315894121373 gpr3"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:left;text-shadow:none;opacity:1><h2 style=color:var(--g-color-secondary)>Peças com modelagem moderna, feitas para quem trabalha com presença.</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:left;text-shadow:none;opacity:1><h2 style=color:var(--g-color-secondary)>{{ section.settings.hero_subheading | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179002317926242806_d
@@ -25,16 +61,23 @@
   class="conteudo borda_igual elemento_botao typography-button-large c e_botao link_externo botao_conversao gpr5"
   target="_blank"
   rel="noopener noreferrer"
-  href="{{ whatsapp_url }}"
-><span class=gpr6>Quero fazer meu orçamento</span></a></div>
+  href="{{ hero_button_url }}"
+><span class=gpr6>{{ section.settings.hero_button_label | escape }}</span></a></div>
         <div
           id=e_3647728_1_179002364158606223
           class="element gpc-blocos_bloco_elemento elemento_imagem gpc-e e_imagem e_3647728_1_179002364158606223 gpr7"
+          {{ hero_art.shopify_attributes }}
         >
           <div
             class="conteudo imagem elemento_imagem c e_imagem"
             style="z-index:15;border-color:var(--g-border-none-color);border-style:var(--g-border-none-style);border-width:var(--g-border-none-width);filter:saturate(0) brightness(2);opacity:1;border-radius:var(--g-border-none-radius)"
-          ><picture><img src="{{ 'lyss-image-14.webp' | asset_url }}" alt class=imagem_fundo width=2049 height=1152></picture></div>
+          ><picture>
+            {% if hero_art.settings.image != blank %}
+              {{ hero_art.settings.image | image_url: width: 2049 | image_tag: class: 'imagem_fundo', alt: hero_art.settings.image.alt }}
+            {% else %}
+              <img src="{{ 'lyss-image-14.webp' | asset_url }}" alt class=imagem_fundo width=2049 height=1152>
+            {% endif %}
+          </picture></div>
         </div>
         <div
           id=e_3647728_1_179064166163273302_m
@@ -53,7 +96,14 @@
       </div>
     </div>
     <div id=b_3647728_1_179064158586504648 class="block gpc-b gpr24 sf-hidden"></div>
-    <div id=b_3647728_1_179002589237243521 class="block gpc-b gpr34">
+    <div
+      id=b_3647728_1_179002589237243521
+      class="block gpc-b gpr34"
+      {% if collection_background.settings.image != blank %}
+        style="--sf-img-1: url('{{ collection_background.settings.image | image_url: width: 2400 }}')"
+      {% endif %}
+      {{ collection_background.shopify_attributes }}
+    >
       <div class=overlay style=background:var(--g-color-card);opacity:0></div>
       <div class="center centralizar">
         <div
@@ -70,28 +120,35 @@
           class="element gpc-blocos_bloco_elemento elemento_botao gpc-e e_botao e_3647728_1_179002833960221445 gpc-sombra-medium gpr27"
         ><a
   class="conteudo borda_igual elemento_botao typography-button-large c e_botao link_externo botao_conversao gpr28"
-  href="{{ routes.all_products_collection_url }}"
-><span class=gpr29>Quero ver os modelos</span></a></div>
+  href="{{ collection_button_url }}"
+><span class=gpr29>{{ section.settings.collection_button_label | escape }}</span></a></div>
         <div
           id=e_3647728_1_179063572783141908
           class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179063572783141908 gpr30"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:center;text-shadow:none;opacity:1><h2 style=color:var(--g-color-neutral-dark)>Conheça a coleção.</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:center;text-shadow:none;opacity:1><h2 style=color:var(--g-color-neutral-dark)>{{ section.settings.collection_heading | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063588008845704
           class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179063588008845704 gpr31"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:center;text-shadow:none;opacity:1><h2 style=color:var(--g-color-neutral-dark)>Modelos, cores e detalhes para todos os estilos.</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:center;text-shadow:none;opacity:1><h2 style=color:var(--g-color-neutral-dark)>{{ section.settings.collection_subheading | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063627483948551
           class="element gpc-blocos_bloco_elemento elemento_imagem gpc-e e_imagem e_3647728_1_179063627483948551 gpr32"
+          {{ collection_art.shopify_attributes }}
         >
           <div
             class="conteudo imagem elemento_imagem c e_imagem"
             style="z-index:15;border-color:var(--g-border-none-color);border-style:var(--g-border-none-style);border-width:var(--g-border-none-width);filter:saturate(0.83) brightness(0.99) contrast(1.1);opacity:1;border-radius:var(--g-border-none-radius)"
-          ><picture><img src="{{ 'lyss-image-15.webp' | asset_url }}" alt class=imagem_fundo width=2049 height=1152></picture></div>
+          ><picture>
+            {% if collection_art.settings.image != blank %}
+              {{ collection_art.settings.image | image_url: width: 2049 | image_tag: class: 'imagem_fundo', alt: collection_art.settings.image.alt }}
+            {% else %}
+              <img src="{{ 'lyss-image-15.webp' | asset_url }}" alt class=imagem_fundo width=2049 height=1152>
+            {% endif %}
+          </picture></div>
         </div>
         <div
           id=e_3647728_1_179064207284379619
@@ -104,39 +161,49 @@
         </div>
       </div>
     </div>
-    <div id=b_3647728_1_179002860046306606 class="block gpc-b gpr57">
+    <div
+      id=b_3647728_1_179002860046306606
+      class="block gpc-b gpr57"
+      {% if audience_background.settings.image != blank %}
+        style="--sf-img-2: url('{{ audience_background.settings.image | image_url: width: 2400 }}')"
+      {% endif %}
+      {{ audience_background.shopify_attributes }}
+    >
       <div class=overlay style=background:var(--g-color-card);opacity:0></div>
       <div class="center centralizar">
         <div
           id=e_3647728_1_179063654416667878
           class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179063654416667878 gpr35"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr36"><h2 style=color:var(--g-color-secondary)>Feito para quem representa a profissão com estilo.</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr36"><h2 style=color:var(--g-color-secondary)>{{ section.settings.audience_heading | escape }}</h2></div>
         </div>
-        <div
-          id=e_3647728_1_179063699863265850
-          class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179063699863265850 gpr37"
-        >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:center;text-shadow:none;opacity:1><h2 style=color:var(--g-color-neutral-dark)>Turmas de faculdade da área da saúde</h2></div>
-        </div>
-        <div
-          id=e_3647728_1_179063703835444396
-          class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179063703835444396 gpr38"
-        >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr39"><h2 style=color:var(--g-color-neutral-dark)>Clínicas médicas</h2></div>
-        </div>
-        <div
-          id=e_3647728_1_179063705798327578
-          class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179063705798327578 gpr40"
-        >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr41"><h2 style=color:var(--g-color-neutral-dark)>Clínicas veterinárias</h2></div>
-        </div>
-        <div
-          id=e_3647728_1_179063708226686888
-          class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179063708226686888 gpr42"
-        >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr43"><h2 style=color:var(--g-color-neutral-dark)>Clínicas de estética e beleza</h2></div>
-        </div>
+        {% for block in audience_items %}
+          {% case forloop.index %}
+            {% when 1 %}
+              {% assign item_id = 'e_3647728_1_179063699863265850' %}
+              {% assign item_outer_class = 'gpr37' %}
+              {% assign item_inner_class = '' %}
+            {% when 2 %}
+              {% assign item_id = 'e_3647728_1_179063703835444396' %}
+              {% assign item_outer_class = 'gpr38' %}
+              {% assign item_inner_class = 'gpr39' %}
+            {% when 3 %}
+              {% assign item_id = 'e_3647728_1_179063705798327578' %}
+              {% assign item_outer_class = 'gpr40' %}
+              {% assign item_inner_class = 'gpr41' %}
+            {% when 4 %}
+              {% assign item_id = 'e_3647728_1_179063708226686888' %}
+              {% assign item_outer_class = 'gpr42' %}
+              {% assign item_inner_class = 'gpr43' %}
+          {% endcase %}
+          <div
+            id={{ item_id }}
+            class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo {{ item_id }} {{ item_outer_class }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="conteudo elemento_titulo typography-custom-0 c e_titulo {{ item_inner_class }}"><h2 style=color:var(--g-color-neutral-dark)>{{ block.settings.title | escape }}</h2></div>
+          </div>
+        {% endfor %}
         <div
           id=e_3647728_1_179063710187185546
           class="element gpc-blocos_bloco_elemento elemento_caixa gpc-e e_caixa e_3647728_1_179063710187185546 gpr44"
@@ -175,8 +242,8 @@
           class="element gpc-blocos_bloco_elemento elemento_botao gpc-e e_botao e_3647728_1_179063738534002826 gpc-sombra-medium gpr53"
         ><a
   class="conteudo borda_igual elemento_botao typography-button-large c e_botao link_externo botao_conversao gpr54"
-  href="{{ routes.all_products_collection_url }}"
-><span class=gpr55>Quero ver os modelos</span></a></div>
+  href="{{ audience_button_url }}"
+><span class=gpr55>{{ section.settings.audience_button_label | escape }}</span></a></div>
         <div
           id=e_3647728_1_179064105953489017
           class="element gpc-blocos_bloco_elemento elemento_caixa gpc-e e_caixa e_3647728_1_179064105953489017 gpr56"
@@ -201,67 +268,72 @@
           id=e_3647728_1_179063893351471348
           class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179063893351471348 gpr60"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:center;text-shadow:none;opacity:1><h2 style=color:var(--g-color-neutral-dark)>Por que escolher a Lyss Jalecos</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:center;text-shadow:none;opacity:1><h2 style=color:var(--g-color-neutral-dark)>{{ section.settings.features_heading | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063897584914680
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulzu769z4hvag gp-group-1mulzsp0xogx78n gpc-e e_titulo e_3647728_1_179063897584914680 gpr61"
+          {{ benefit_1.shopify_attributes }}
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr62"><h2 style=color:var(--g-color-custom-1)>Modelagem moderna</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr62"><h2 style=color:var(--g-color-custom-1)>{{ benefit_1.settings.title | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063897584951755
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulzu769z4hvag gp-group-1mulzsp0xogx78n gpc-e e_titulo e_3647728_1_179063897584951755 gpr63"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr64"><h2 style=color:var(--g-color-custom-2)>Peças que valorizam o corpo, sem o modelo tradicional.</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr64"><h2 style=color:var(--g-color-custom-2)>{{ benefit_1.settings.description | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063905564385302
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulzu04o2mvk34 gp-group-1mulzsr2a5ykm4b gpc-e e_titulo e_3647728_1_179063905564385302 gpr65"
+          {{ benefit_2.shopify_attributes }}
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr66"><h2 style=color:var(--g-color-custom-1)>Personalização</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr66"><h2 style=color:var(--g-color-custom-1)>{{ benefit_2.settings.title | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063905564300120
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulzu04o2mvk34 gp-group-1mulzsr2a5ykm4b gpc-e e_titulo e_3647728_1_179063905564300120 gpr67"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr68"><h2 style=color:var(--g-color-custom-2)>Peças com nome, profissão ou logomarca da clínica</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr68"><h2 style=color:var(--g-color-custom-2)>{{ benefit_2.settings.description | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063908162497566
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulztpkwughi0l gp-group-1mulzssw5296o2e gpc-e e_titulo e_3647728_1_179063908162497566 gpr69"
+          {{ benefit_3.shopify_attributes }}
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr70"><h2 style=color:var(--g-color-custom-1)>Variedade</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr70"><h2 style=color:var(--g-color-custom-1)>{{ benefit_3.settings.title | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063908162442174
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulztpkwughi0l gp-group-1mulzssw5296o2e gpc-e e_titulo e_3647728_1_179063908162442174 gpr71"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr72"><h2 style=color:var(--g-color-custom-2)>Modelos e cores para todos os estilos.</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr72"><h2 style=color:var(--g-color-custom-2)>{{ benefit_3.settings.description | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063911404773370
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulztgz7ti80hv gp-group-1mulzsuk4a3e7k0 gpc-e e_titulo e_3647728_1_179063911404773370 gpr73"
+          {{ benefit_4.shopify_attributes }}
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr74"><h2 style=color:var(--g-color-custom-1)>Atendimento direto</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr74"><h2 style=color:var(--g-color-custom-1)>{{ benefit_4.settings.title | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063911404726565
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulztgz7ti80hv gp-group-1mulzsuk4a3e7k0 gpc-e e_titulo e_3647728_1_179063911404726565 gpr75"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr76"><h2 style=color:var(--g-color-custom-2)>Contato próximo, do orçamento à entrega, pelo WhatsApp.</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr76"><h2 style=color:var(--g-color-custom-2)>{{ benefit_4.settings.description | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063916445907504
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulzt8y8tsatd7 gp-group-1mulzswkw8r7o4t gpc-e e_titulo e_3647728_1_179063916445907504 gpr77"
+          {{ benefit_5.shopify_attributes }}
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr78"><h2 style=color:var(--g-color-custom-1)>Atacado</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr78"><h2 style=color:var(--g-color-custom-1)>{{ benefit_5.settings.title | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063917744916868
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mulzw1c9upthpr gp-group-1mulzt8y8tsatd7 gp-group-1mulzswkw8r7o4t gpc-e e_titulo e_3647728_1_179063917744916868 gpr79"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr80"><h2 style=color:var(--g-color-custom-2)>Condições especiais para pedidos em maior quantidade.</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo gpr80"><h2 style=color:var(--g-color-custom-2)>{{ benefit_5.settings.description | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063921711139446
@@ -284,86 +356,51 @@
     style=background:var(--g-color-base);display:block;font-size:calc(24px*var(--gp-text-unzoom,1));height:24px;border-color:rgb(195,195,195);color:var(--g-color-base-text)
   ></div>
   <div class=gsi_imagens>
-    <div
-      id=gsi_imagem_3647728_1_1790639217111394461790639615467
-      class="imagem efeito"
-      style="background-image:url("
-      {{
-      'lyss-image-07.jpg'
-      |
-      asset_url
-      }}");width:100%;opacity:0;transition:linear;transform:matrix(1,0,0,1,-469,0)"
-      posicao=0
-    ></div>
-    <div
-      id=gsi_imagem_3647728_1_1790639217111394461790639621341
-      class="imagem efeito"
-      style="background-image:url("
-      {{
-      'lyss-image-08.jpg'
-      |
-      asset_url
-      }}");width:100%;opacity:1;transition:linear;transform:matrix(1,0,0,1,-469,0)"
-      posicao=1
-    ></div>
-    <div
-      id=gsi_imagem_3647728_1_1790639217111394461790639623416
-      class="imagem efeito ativo"
-      style=background-image:url("{{
-      'lyss-image-09.jpg'
-      |
-      asset_url
-      }}");width:100%;opacity:1;transition:linear;transform:matrix(1,0,0,1,0,0)
-      posicao=2
-    ></div>
-    <div
-      id=gsi_imagem_3647728_1_1790639217111394461790639625530
-      class="imagem efeito"
-      style=background-image:url("{{
-      'lyss-image-10.jpg'
-      |
-      asset_url
-      }}");width:100%;opacity:1;transition:linear;transform:matrix(1,0,0,1,469,0)
-      posicao=3
-    ></div>
-    <div
-      id=gsi_imagem_3647728_1_1790639217111394461790639627383
-      class="imagem efeito"
-      style="background-image:url("
-      {{
-      'lyss-image-11.jpg'
-      |
-      asset_url
-      }}");width:100%;opacity:0;transition:linear;transform:matrix(1,0,0,1,-469,0)"
-      posicao=4
-    ></div>
-    <div
-      id=gsi_imagem_3647728_1_1790639217111394461790639629721
-      class="imagem efeito"
-      style="background-image:url("
-      {{
-      'lyss-image-12.jpg'
-      |
-      asset_url
-      }}");width:100%;opacity:0;transition:linear;transform:matrix(1,0,0,1,-469,0)"
-      posicao=5
-    ></div>
-    <div
-      id=gsi_imagem_3647728_1_1790639217111394461790639631692
-      class="imagem efeito"
-      style=background-image:url("{{
-      'lyss-image-13.jpg'
-      |
-      asset_url
-      }}");width:100%;opacity:0;transition:linear;transform:matrix(1,0,0,1,-469,0)
-      posicao=6
-    ></div>
+    {% for block in gallery_images %}
+      {% assign slide_image_fallback = 'lyss-image-07.jpg' %}
+      {% assign slide_id = 'gsi_imagem_3647728_1_1790639217111394461790639615467' %}
+      {% assign slide_opacity = '0' %}
+      {% assign slide_offset = '-469' %}
+      {% case forloop.index %}
+        {% when 2 %}
+          {% assign slide_image_fallback = 'lyss-image-08.jpg' %}
+          {% assign slide_id = 'gsi_imagem_3647728_1_1790639217111394461790639621341' %}
+          {% assign slide_opacity = '1' %}
+        {% when 3 %}
+          {% assign slide_image_fallback = 'lyss-image-09.jpg' %}
+          {% assign slide_id = 'gsi_imagem_3647728_1_1790639217111394461790639623416' %}
+          {% assign slide_opacity = '1' %}
+          {% assign slide_offset = '0' %}
+        {% when 4 %}
+          {% assign slide_image_fallback = 'lyss-image-10.jpg' %}
+          {% assign slide_id = 'gsi_imagem_3647728_1_1790639217111394461790639625530' %}
+          {% assign slide_opacity = '1' %}
+          {% assign slide_offset = '469' %}
+        {% when 5 %}
+          {% assign slide_image_fallback = 'lyss-image-11.jpg' %}
+          {% assign slide_id = 'gsi_imagem_3647728_1_1790639217111394461790639627383' %}
+        {% when 6 %}
+          {% assign slide_image_fallback = 'lyss-image-12.jpg' %}
+          {% assign slide_id = 'gsi_imagem_3647728_1_1790639217111394461790639629721' %}
+        {% when 7 %}
+          {% assign slide_image_fallback = 'lyss-image-13.jpg' %}
+          {% assign slide_id = 'gsi_imagem_3647728_1_1790639217111394461790639631692' %}
+      {% endcase %}
+      <div
+        id={{ slide_id }}
+        class="imagem efeito{% if forloop.index == 3 %} ativo{% endif %}"
+        style="background-image: url('{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1600 }}{% else %}{{ slide_image_fallback | asset_url }}{% endif %}'); width: 100%; opacity: {{ slide_opacity }}; transition: linear; transform: matrix(1, 0, 0, 1, {{ slide_offset }}, 0)"
+        posicao="{{ forloop.index0 }}"
+        {{ block.shopify_attributes }}
+      ></div>
+    {% endfor %}
   </div>
 </div></div>
         </div>
         <div
           id=e_3647728_1_179063945099713547
           class="element gpc-blocos_bloco_elemento elemento_imagem gp-group-1mulzw1c9upthpr gp-group-1mulzu769z4hvag gpc-e e_imagem e_3647728_1_179063945099713547 gpr82"
+          {{ feature_pattern.shopify_attributes }}
         >
           <div
             class="conteudo imagem elemento_imagem c e_imagem"
@@ -482,14 +519,15 @@
         <div
           id=e_3647728_1_179003077757499319
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mum012gpc9mmmg gp-group-mubu3vmuuh7k3t gp-group-mubu3vmuw5hj1h gp-group-mubu3vmub41gk1 gpc-e e_titulo e_3647728_1_179003077757499319 gpr93"
+          {{ step_1.shopify_attributes }}
         >
-          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr94"><h2 style=color:var(--g-color-custom-3)>Entre em contato pelo WhatsApp</h2></div>
+          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr94"><h2 style=color:var(--g-color-custom-3)>{{ step_1.settings.title | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179003081895066626
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mum012gpc9mmmg gp-group-mubu4rk6nh7lwa gp-group-mubu4rk62kdrhe gp-group-mubu4rk6j074y5 gpc-e e_titulo e_3647728_1_179003081895066626 gpr95"
         >
-          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr96"><h2 style=color:var(--g-color-custom-2)>Fale diretamente com a Lyss Jalecos para iniciar o seu pedido.</h2></div>
+          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr96"><h2 style=color:var(--g-color-custom-2)>{{ step_1.settings.description | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179003086089521119
@@ -509,14 +547,15 @@
         <div
           id=e_3647728_1_179003090756772183
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mum010agdudbxv gp-group-mubu6nxrdzwo1o gp-group-mubu6nxrixumt5 gp-group-mubu6nxrsx6bql gpc-e e_titulo e_3647728_1_179003090756772183 gpr100"
+          {{ step_2.shopify_attributes }}
         >
-          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr101"><h2 style=color:var(--g-color-custom-3)>Conte os detalhes</h2></div>
+          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr101"><h2 style=color:var(--g-color-custom-3)>{{ step_2.settings.title | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179003090756791968
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-1mum010agdudbxv gp-group-mubu6nxr6qk3pd gp-group-mubu6nxr0qq9lt gp-group-mubu6nxr337600 gpc-e e_titulo e_3647728_1_179003090756791968 gpr102"
         >
-          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr103"><h2 style=color:var(--g-color-custom-2)>Informe a turma, clínica ou o tipo de peça desejada.</h2></div>
+          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr103"><h2 style=color:var(--g-color-custom-2)>{{ step_2.settings.description | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179003093255923016
@@ -546,19 +585,20 @@
           id=e_3647728_1_179003099068753410
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-mubu8g2mbkdwgc gp-group-mubu8g2mdg6sc1 gp-group-mubu8g2m04ftxf gpc-e e_titulo e_3647728_1_179003099068753410 gpr108"
         >
-          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr109"><h2 style=color:var(--g-color-custom-2)>Aprovado o orçamento, sua encomenda entra em produção.</h2></div>
+          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr109"><h2 style=color:var(--g-color-custom-2)>{{ step_3.settings.description | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179003099068752680
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-mubu8g2mpmd16v gp-group-mubu8g2n0yaipx gp-group-mubu8g2nkm4e9g gpc-e e_titulo e_3647728_1_179003099068752680 gpr110"
+          {{ step_3.shopify_attributes }}
         >
-          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr111"><h2 style=color:var(--g-color-custom-3)>Receba seu orçamento</h2></div>
+          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr111"><h2 style=color:var(--g-color-custom-3)>{{ step_3.settings.title | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063850504610396
           class="element gpc-blocos_bloco_elemento elemento_titulo gpc-e e_titulo e_3647728_1_179063850504610396 gpr112"
         >
-          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:center;text-shadow:none;opacity:1><h2 style=color:var(--g-color-neutral-dark)>Como funciona o seu pedido?</h2></div>
+          <div class="conteudo elemento_titulo typography-custom-0 c e_titulo" style=z-index:7;text-align:center;text-shadow:none;opacity:1><h2 style=color:var(--g-color-neutral-dark)>{{ section.settings.steps_heading | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179063866206370325
@@ -578,13 +618,13 @@
           id=e_3647728_1_179003157066592445
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-mubukvl5fehoto gp-group-mubukvl5tdv0tg gpc-e e_titulo e_3647728_1_179003157066592445 gpr115"
         >
-          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr116"><h2 style=color:var(--g-color-base)>Vista-se com estilo.</h2></div>
+          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr116"><h2 style=color:var(--g-color-base)>{{ section.settings.cta_heading | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179003161398496637
           class="element gpc-blocos_bloco_elemento elemento_titulo gp-group-mubult0gnt5yn7 gp-group-mubult0ggprpnz gp-group-mubult0gc751ku gp-group-mubult0gtzpuo1 gp-group-mubult0gln47ug gpc-e e_titulo e_3647728_1_179003161398496637 gpr117"
         >
-          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr118"><h2 style=color:var(--g-color-base)>Fale agora com a Lyss Jalecos e garanta o jaleco ou scrub da sua turma ou clínica. Condições</h2><h2><span style=color:var(--g-color-base)>especiais também para pedidos em ata</span><span style=color:var(--g-color-base)>cado.</span></h2></div>
+          <div class="conteudo elemento_titulo typography-headings-h2 c e_titulo gpr118"><h2 style=color:var(--g-color-base)>{{ section.settings.cta_body | escape }}</h2></div>
         </div>
         <div
           id=e_3647728_1_179003163415253406
@@ -593,16 +633,23 @@
   class="conteudo borda_igual elemento_botao typography-button-large c e_botao link_externo botao_conversao gpr120"
   target="_blank"
   rel="noopener noreferrer"
-  href="{{ whatsapp_url }}"
-><span class=gpr121>Quero fazer meu pedido</span></a></div>
+  href="{{ cta_button_url }}"
+><span class=gpr121>{{ section.settings.cta_button_label | escape }}</span></a></div>
         <div
           id=e_3647728_1_179064061367800696
           class="element gpc-blocos_bloco_elemento elemento_imagem gpc-e e_imagem e_3647728_1_179064061367800696 gpr122"
+          {{ cta_art.shopify_attributes }}
         >
           <div
             class="conteudo imagem elemento_imagem c e_imagem"
             style="z-index:15;border-color:var(--g-border-none-color);border-style:var(--g-border-none-style);border-width:var(--g-border-none-width);filter:saturate(0) brightness(2) contrast(2);opacity:1;border-radius:var(--g-border-none-radius)"
-          ><picture><img src="{{ 'lyss-image-17.webp' | asset_url }}" class=imagem_fundo alt width=2049 height=1152></picture></div>
+          ><picture>
+            {% if cta_art.settings.image != blank %}
+              {{ cta_art.settings.image | image_url: width: 2049 | image_tag: class: 'imagem_fundo', alt: cta_art.settings.image.alt }}
+            {% else %}
+              <img src="{{ 'lyss-image-17.webp' | asset_url }}" class=imagem_fundo alt width=2049 height=1152>
+            {% endif %}
+          </picture></div>
         </div>
       </div>
     </div>
@@ -612,11 +659,18 @@
         <div
           id=e_3647728_1_179003181372266611
           class="element gpc-blocos_bloco_elemento elemento_imagem gpc-e e_imagem e_3647728_1_179003181372266611 gpr124"
+          {{ final_art.shopify_attributes }}
         >
           <div
             class="conteudo imagem elemento_imagem c e_imagem"
             style="z-index:15;border-color:var(--g-border-none-color);border-style:var(--g-border-none-style);border-width:var(--g-border-none-width);filter:hue-rotate(0deg) saturate(1) brightness(1) contrast(1) invert(0) sepia(0) blur(0px) grayscale(0);opacity:1;border-radius:var(--g-border-none-radius)"
-          ><picture><img src="{{ 'lyss-image-18.webp' | asset_url }}" class=imagem_fundo alt width=2049 height=1152></picture></div>
+          ><picture>
+            {% if final_art.settings.image != blank %}
+              {{ final_art.settings.image | image_url: width: 2049 | image_tag: class: 'imagem_fundo', alt: final_art.settings.image.alt }}
+            {% else %}
+              <img src="{{ 'lyss-image-18.webp' | asset_url }}" class=imagem_fundo alt width=2049 height=1152>
+            {% endif %}
+          </picture></div>
         </div>
       </div>
     </div>
@@ -625,10 +679,357 @@
 {% schema %}
 {
   "name": "Landing page Lyss",
-  "settings": [],
+  "max_blocks": 27,
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Título principal",
+      "default": "Estilo e atitude para quem veste a própria profissão."
+    },
+    {
+      "type": "text",
+      "id": "hero_subheading",
+      "label": "Texto de apoio do início",
+      "default": "Peças com modelagem moderna, feitas para quem trabalha com presença."
+    },
+    {
+      "type": "text",
+      "id": "hero_button_label",
+      "label": "Botão do início",
+      "default": "Quero fazer meu orçamento"
+    },
+    {
+      "type": "url",
+      "id": "hero_button_url",
+      "label": "Link do botão do início"
+    },
+    {
+      "type": "text",
+      "id": "collection_heading",
+      "label": "Título da coleção",
+      "default": "Conheça a coleção."
+    },
+    {
+      "type": "text",
+      "id": "collection_subheading",
+      "label": "Texto da coleção",
+      "default": "Modelos, cores e detalhes para todos os estilos."
+    },
+    {
+      "type": "text",
+      "id": "collection_button_label",
+      "label": "Botão da coleção",
+      "default": "Quero ver os modelos"
+    },
+    {
+      "type": "url",
+      "id": "collection_button_url",
+      "label": "Link do botão da coleção"
+    },
+    {
+      "type": "text",
+      "id": "audience_heading",
+      "label": "Título do público",
+      "default": "Feito para quem representa a profissão com estilo."
+    },
+    {
+      "type": "text",
+      "id": "audience_button_label",
+      "label": "Botão do público",
+      "default": "Quero ver os modelos"
+    },
+    {
+      "type": "url",
+      "id": "audience_button_url",
+      "label": "Link do botão do público"
+    },
+    {
+      "type": "text",
+      "id": "features_heading",
+      "label": "Título dos diferenciais",
+      "default": "Por que escolher a Lyss Jalecos"
+    },
+    {
+      "type": "text",
+      "id": "steps_heading",
+      "label": "Título das etapas",
+      "default": "Como funciona o seu pedido?"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "Título da chamada final",
+      "default": "Vista-se com estilo."
+    },
+    {
+      "type": "textarea",
+      "id": "cta_body",
+      "label": "Texto da chamada final",
+      "default": "Fale agora com a Lyss Jalecos e garanta o jaleco ou scrub da sua turma ou clínica. Condições especiais também para pedidos em atacado."
+    },
+    {
+      "type": "text",
+      "id": "cta_button_label",
+      "label": "Botão da chamada final",
+      "default": "Quero fazer meu pedido"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_url",
+      "label": "Link do botão da chamada final"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hero_background",
+      "name": "Fundo do início",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem de fundo",
+          "info": "Se ficar vazio, a imagem atual da página inicial será mantida."
+        }
+      ]
+    },
+    {
+      "type": "hero_art",
+      "name": "Imagem do início",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem",
+          "info": "Se ficar vazio, a imagem atual da página inicial será mantida."
+        }
+      ]
+    },
+    {
+      "type": "collection_background",
+      "name": "Fundo da coleção",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem de fundo",
+          "info": "Se ficar vazio, a imagem atual da página inicial será mantida."
+        }
+      ]
+    },
+    {
+      "type": "collection_art",
+      "name": "Imagem da coleção",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem",
+          "info": "Se ficar vazio, a imagem atual da página inicial será mantida."
+        }
+      ]
+    },
+    {
+      "type": "audience_background",
+      "name": "Fundo do público",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem de fundo",
+          "info": "Se ficar vazio, a imagem atual da página inicial será mantida."
+        }
+      ]
+    },
+    {
+      "type": "cta_art",
+      "name": "Imagem da chamada final",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem",
+          "info": "Se ficar vazio, a imagem atual da página inicial será mantida."
+        }
+      ]
+    },
+    {
+      "type": "final_art",
+      "name": "Imagem de encerramento",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem",
+          "info": "Se ficar vazio, a imagem atual da página inicial será mantida."
+        }
+      ]
+    },
+    {
+      "type": "feature_pattern",
+      "name": "Padrão dos diferenciais",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem do padrão",
+          "info": "Se ficar vazio, o padrão atual será mantido."
+        }
+      ]
+    },
+    {
+      "type": "audience_item",
+      "name": "Público",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Texto",
+          "default": "Clínicas médicas"
+        }
+      ]
+    },
+    {
+      "type": "benefit_item",
+      "name": "Diferencial",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Modelagem moderna"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descrição",
+          "default": "Peças que valorizam o corpo, sem o modelo tradicional."
+        }
+      ]
+    },
+    {
+      "type": "step_item",
+      "name": "Etapa do pedido",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Entre em contato pelo WhatsApp"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descrição",
+          "default": "Fale diretamente com a Lyss Jalecos para iniciar o seu pedido."
+        }
+      ]
+    },
+    {
+      "type": "gallery_image",
+      "name": "Imagem da galeria",
+      "limit": 7,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem",
+          "info": "Se ficar vazio, a imagem atual da galeria será mantida."
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Landing page Lyss"
+      "name": "Landing page Lyss",
+      "blocks": [
+        { "type": "hero_background" },
+        { "type": "hero_art" },
+        { "type": "collection_background" },
+        { "type": "collection_art" },
+        { "type": "audience_background" },
+        { "type": "cta_art" },
+        { "type": "final_art" },
+        { "type": "feature_pattern" },
+        { "type": "audience_item", "settings": { "title": "Turmas de faculdade da área da saúde" } },
+        { "type": "audience_item", "settings": { "title": "Clínicas médicas" } },
+        { "type": "audience_item", "settings": { "title": "Clínicas veterinárias" } },
+        { "type": "audience_item", "settings": { "title": "Clínicas de estética e beleza" } },
+        {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Modelagem moderna",
+            "description": "Peças que valorizam o corpo, sem o modelo tradicional."
+          }
+        },
+        {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Personalização",
+            "description": "Peças com nome, profissão ou logomarca da clínica"
+          }
+        },
+        {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Variedade",
+            "description": "Modelos e cores para todos os estilos."
+          }
+        },
+        {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Atendimento direto",
+            "description": "Contato próximo, do orçamento à entrega, pelo WhatsApp."
+          }
+        },
+        {
+          "type": "benefit_item",
+          "settings": {
+            "title": "Atacado",
+            "description": "Condições especiais para pedidos em maior quantidade."
+          }
+        },
+        {
+          "type": "step_item",
+          "settings": {
+            "title": "Entre em contato pelo WhatsApp",
+            "description": "Fale diretamente com a Lyss Jalecos para iniciar o seu pedido."
+          }
+        },
+        {
+          "type": "step_item",
+          "settings": {
+            "title": "Conte os detalhes",
+            "description": "Informe a turma, clínica ou o tipo de peça desejada."
+          }
+        },
+        {
+          "type": "step_item",
+          "settings": {
+            "title": "Receba seu orçamento",
+            "description": "Aprovado o orçamento, sua encomenda entra em produção."
+          }
+        },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" },
+        { "type": "gallery_image" }
+      ]
     }
   ]
 }
