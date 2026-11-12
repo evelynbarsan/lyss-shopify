@@ -1,6 +1,13 @@
 #header-component .header__row--top {
-  border-top: 3px solid #fdc656;
+  box-sizing: border-box;
+  height: 82px;
+  border-top: 3px solid #bba87e;
   color: #fff;
+}
+
+#header-component .header__row--top .header__columns {
+  box-sizing: border-box;
+  height: 79px;
 }
 
 #header-component .header__column--right {
@@ -86,6 +93,19 @@
 }
 
 @media screen and (max-width: 749px) {
+  #header-component .header__row--top {
+    height: 70px;
+  }
+
+  #header-component .header__row--top .header__columns {
+    height: 67px;
+  }
+
+  #header-component .header__navigation-bar-row {
+    box-sizing: border-box;
+    height: 42px;
+  }
+
   #header-component .lyss-header-menu {
     display: none;
   }
@@ -99,12 +119,13 @@
   position: absolute;
   inset: 0 0 auto;
   z-index: 20;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  min-height: 82px;
+  height: 82px;
   padding: 0 clamp(1.25rem, 3.5vw, 3.5rem);
-  border-top: 3px solid #fdc656;
+  border-top: 3px solid #bba87e;
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
 }
@@ -152,7 +173,8 @@
 @media screen and (max-width: 749px) {
   .lyss-preview-header {
     grid-template-columns: 44px 1fr auto;
-    min-height: 70px;
+    grid-template-rows: 67px 42px;
+    height: 112px;
     padding-inline: 1rem;
   }
 
@@ -184,7 +206,7 @@
 .lyss-catalog-hero {
   position: relative;
   display: flex;
-  min-height: var(--catalog-hero-height, 520px);
+  min-height: var(--catalog-hero-height, 608px);
   overflow: hidden;
   isolation: isolate;
 }
@@ -204,8 +226,8 @@
 
 .lyss-catalog-hero__overlay {
   background:
-    linear-gradient(90deg, rgba(24, 21, 19, 0.34), rgba(24, 21, 19, 0.12) 48%, transparent 82%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 38%);
+    linear-gradient(90deg, rgba(16, 24, 39, 0.34), rgba(16, 24, 39, 0.12) 48%, transparent 82%),
+    linear-gradient(180deg, rgba(16, 24, 39, 0.18), transparent 38%);
 }
 
 .lyss-catalog-hero__content {
@@ -223,7 +245,7 @@
   font-size: clamp(4.8rem, 7vw, 8rem);
   font-weight: 400;
   line-height: 1.05;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+  text-shadow: 0 2px 18px rgba(16, 24, 39, 0.28);
 }
 
 .lyss-catalog-hero__description {
@@ -231,12 +253,12 @@
   margin-top: 1.6rem;
   color: inherit;
   font-size: 1.6rem;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.28);
+  text-shadow: 0 1px 10px rgba(16, 24, 39, 0.28);
 }
 
 @media screen and (max-width: 749px) {
   .lyss-catalog-hero {
-    min-height: min(var(--catalog-hero-height, 520px), 360px);
+    min-height: min(var(--catalog-hero-height, 608px), 537px);
   }
 
   .lyss-catalog-hero__image {

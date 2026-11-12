@@ -64,7 +64,11 @@
         "id": "color_palette",
         "default": {
           "background": "#ffffff",
-          "foreground": "#000000"
+          "foreground": "#242424",
+          "color1": "#E7D3A8",
+          "color2": "#a3bac6",
+          "color3": "#bba87e",
+          "color4": "#F1EDE8"
         }
       }
     ]
@@ -94,25 +98,25 @@
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "default": "work_sans_n4",
+        "default": "open_sans_n4",
         "label": "t:options.body"
       },
       {
         "type": "font_picker",
         "id": "type_subheading_font",
-        "default": "work_sans_n5",
+        "default": "open_sans_n4",
         "label": "t:options.subheading"
       },
       {
         "type": "font_picker",
         "id": "type_heading_font",
-        "default": "anonymous_pro_n4",
+        "default": "open_sans_n4",
         "label": "t:options.heading"
       },
       {
         "type": "font_picker",
         "id": "type_accent_font",
-        "default": "anonymous_pro_n4",
+        "default": "open_sans_n4",
         "label": "t:options.accent"
       },
       {
@@ -1293,21 +1297,21 @@
         "type": "color",
         "id": "palette_primary_button_background",
         "label": "t:settings.background",
-        "default": "{{ settings.color_palette.foreground }}",
+        "default": "#101827",
         "alpha": true
       },
       {
         "type": "color",
         "id": "palette_primary_button_text",
         "label": "t:settings.text",
-        "default": "{{ settings.color_palette.background }}",
+        "default": "#ffffff",
         "alpha": true
       },
       {
         "type": "color",
         "id": "palette_primary_button_border",
         "label": "t:settings.borders",
-        "default": "{{ settings.color_palette.background }}",
+        "default": "#101827",
         "alpha": true
       },
       {
@@ -1377,14 +1381,14 @@
         "type": "color",
         "id": "palette_secondary_button_text",
         "label": "t:settings.text",
-        "default": "{{ settings.color_palette.foreground }}",
+        "default": "#101827",
         "alpha": true
       },
       {
         "type": "color",
         "id": "palette_secondary_button_border",
         "label": "t:settings.borders",
-        "default": "{{ settings.color_palette.foreground }}",
+        "default": "#a3bac6",
         "alpha": true
       },
       {
