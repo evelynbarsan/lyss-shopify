@@ -1,3 +1,9 @@
+/* Navbar actions: change this shared size to resize search, account, and cart together. */
+#header-component,
+.lyss-preview-header {
+  --lyss-header-icon-size: 22px;
+}
+
 #header-component .header__row--top {
   box-sizing: border-box;
   height: 82px;
@@ -16,13 +22,13 @@
 
 #header-component .header-actions__action:not(.account-button) .svg-wrapper > svg,
 #header-component .search-action .svg-wrapper > svg {
-  width: 22px;
-  height: 22px;
+  width: var(--lyss-header-icon-size);
+  height: var(--lyss-header-icon-size);
 }
 
 #header-component .account-button__icon {
-  width: 22px;
-  height: 22px;
+  width: var(--lyss-header-icon-size);
+  height: var(--lyss-header-icon-size);
 }
 
 #header-component .lyss-header-logo {
@@ -172,8 +178,8 @@
 
 .lyss-preview-header__actions svg {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: var(--lyss-header-icon-size);
+  height: var(--lyss-header-icon-size);
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -212,8 +218,8 @@
   }
 
   .lyss-preview-header__actions svg {
-    width: 22px;
-    height: 22px;
+    width: var(--lyss-header-icon-size);
+    height: var(--lyss-header-icon-size);
   }
 }
 

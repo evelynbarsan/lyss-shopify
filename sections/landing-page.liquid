@@ -682,6 +682,10 @@
   "max_blocks": 27,
   "settings": [
     {
+      "type": "paragraph",
+      "content": "Edite aqui os textos e os destinos dos botões da página inicial. Os blocos abaixo controlam imagens, públicos, diferenciais, etapas e galeria."
+    },
+    {
       "type": "text",
       "id": "hero_heading",
       "label": "Título principal",
@@ -697,12 +701,14 @@
       "type": "text",
       "id": "hero_button_label",
       "label": "Botão do início",
+      "info": "Texto do botão exibido sobre a imagem principal.",
       "default": "Quero fazer meu orçamento"
     },
     {
       "type": "url",
       "id": "hero_button_url",
-      "label": "Link do botão do início"
+      "label": "Link do botão do início",
+      "info": "Destino aberto quando a pessoa clica no botão principal."
     },
     {
       "type": "text",
@@ -720,12 +726,14 @@
       "type": "text",
       "id": "collection_button_label",
       "label": "Botão da coleção",
+      "info": "Texto do botão que leva à coleção de produtos.",
       "default": "Quero ver os modelos"
     },
     {
       "type": "url",
       "id": "collection_button_url",
-      "label": "Link do botão da coleção"
+      "label": "Link do botão da coleção",
+      "info": "Destino aberto pelo botão da seção da coleção."
     },
     {
       "type": "text",
@@ -737,12 +745,14 @@
       "type": "text",
       "id": "audience_button_label",
       "label": "Botão do público",
+      "info": "Texto do botão abaixo da lista de públicos.",
       "default": "Quero ver os modelos"
     },
     {
       "type": "url",
       "id": "audience_button_url",
-      "label": "Link do botão do público"
+      "label": "Link do botão do público",
+      "info": "Destino aberto pelo botão da seção de públicos."
     },
     {
       "type": "text",
@@ -772,12 +782,14 @@
       "type": "text",
       "id": "cta_button_label",
       "label": "Botão da chamada final",
+      "info": "Texto do botão exibido na chamada final da página.",
       "default": "Quero fazer meu pedido"
     },
     {
       "type": "url",
       "id": "cta_button_url",
-      "label": "Link do botão da chamada final"
+      "label": "Link do botão da chamada final",
+      "info": "Destino aberto pelo botão da chamada final."
     }
   ],
   "blocks": [
@@ -790,7 +802,7 @@
           "type": "image_picker",
           "id": "image",
           "label": "Imagem de fundo",
-          "info": "Se ficar vazio, a imagem atual da página inicial será mantida."
+          "info": "Imagem de fundo da seção inicial. Se ficar vazia, a imagem atual será mantida."
         }
       ]
     },
@@ -894,6 +906,7 @@
           "type": "text",
           "id": "title",
           "label": "Texto",
+          "info": "Nome de um público exibido na lista da página inicial.",
           "default": "Clínicas médicas"
         }
       ]
@@ -907,12 +920,14 @@
           "type": "text",
           "id": "title",
           "label": "Título",
+          "info": "Título de um cartão na seção de diferenciais.",
           "default": "Modelagem moderna"
         },
         {
           "type": "textarea",
           "id": "description",
           "label": "Descrição",
+          "info": "Texto mostrado abaixo do título do diferencial.",
           "default": "Peças que valorizam o corpo, sem o modelo tradicional."
         }
       ]
@@ -926,12 +941,14 @@
           "type": "text",
           "id": "title",
           "label": "Título",
+          "info": "Título de uma etapa do processo de pedido.",
           "default": "Entre em contato pelo WhatsApp"
         },
         {
           "type": "textarea",
           "id": "description",
           "label": "Descrição",
+          "info": "Texto mostrado abaixo do título da etapa.",
           "default": "Fale diretamente com a Lyss Jalecos para iniciar o seu pedido."
         }
       ]

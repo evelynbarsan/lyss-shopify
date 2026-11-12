@@ -1302,9 +1302,14 @@
       "content": "t:content.menu"
     },
     {
+      "type": "paragraph",
+      "content": "O menu exibe Início e Catálogo em todas as páginas. Os controles abaixo ajustam apenas a posição e a linha."
+    },
+    {
       "type": "select",
       "id": "menu_position",
       "label": "t:settings.position",
+      "info": "Altera o alinhamento do menu no cabeçalho.",
       "options": [
         {
           "value": "left",
@@ -1325,6 +1330,7 @@
       "type": "select",
       "id": "menu_row",
       "label": "t:settings.row",
+      "info": "Escolhe em qual linha do cabeçalho o menu aparece.",
       "options": [
         {
           "value": "top",
@@ -1359,6 +1365,7 @@
       "type": "checkbox",
       "id": "show_search",
       "label": "t:settings.search_icon",
+      "info": "Mostra ou oculta o ícone de busca ao lado das ações do cabeçalho.",
       "default": true
     },
     {
@@ -1616,6 +1623,10 @@
     {
       "type": "header",
       "content": "t:content.utilities"
+    },
+    {
+      "type": "paragraph",
+      "content": "Busca, conta e sacola mantêm o mesmo tamanho de ícone. Para ajustar esse tamanho no código, altere --lyss-header-icon-size em assets/lyss-header.css."
     },
     {
       "type": "select",
