@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prévia do catálogo — Lyss Jalecos</title>
+  <link rel="stylesheet" href="./assets/lyss-header.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 10px;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      color: #171717;
+    }
+
+    .lyss-catalog-preview-results {
+      min-height: 30rem;
+      padding: 3.2rem clamp(2.4rem, 8vw, 12rem);
+      background: #fff;
+    }
+
+    .lyss-catalog-preview-results h2 {
+      margin: 0;
+      font-size: 2.4rem;
+      font-weight: 400;
+    }
+
+    .lyss-catalog-preview-results p {
+      margin-top: 0.8rem;
+      color: #666;
+      font-size: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="lyss-preview-header">
+    <a class="lyss-preview-header__logo" href="./preview.html" aria-label="Lyss Jalecos, início">
+      <img src="./assets/lyss-image-14.webp" width="136" height="78" alt="Lyss Jalecos">
+    </a>
+    <nav class="lyss-header-menu" aria-label="Navegação principal">
+      <a href="./preview.html">Início</a>
+      <a href="#catalog-results" aria-current="page">Catálogo</a>
+    </nav>
+    <div class="lyss-preview-header__actions">
+      <a href="/search" aria-label="Pesquisar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.4"></circle><path d="m15.6 15.6 4.1 4.1"></path></svg>
+      </a>
+      <a href="/account" aria-label="Minha conta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.4"></circle><path d="M5.5 20c.5-3.7 2.8-5.8 6.5-5.8s6 2.1 6.5 5.8"></path></svg>
+      </a>
+      <a href="/cart" aria-label="Sacola">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 13H4L5 8Z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+      </a>
+    </div>
+  </header>
+
+  <section class="lyss-catalog-hero" style="--catalog-hero-height: 520px" aria-labelledby="catalog-heading">
+    <img
+      class="lyss-catalog-hero__image"
+      src="./assets/lyss-image-02.webp"
+      width="2103"
+      height="748"
+      alt=""
+      fetchpriority="high"
+    >
+    <div class="lyss-catalog-hero__overlay" aria-hidden="true"></div>
+    <div class="lyss-catalog-hero__content">
+      <h1 id="catalog-heading">Produtos</h1>
+    </div>
+  </section>
+
+  <main class="lyss-catalog-preview-results" id="catalog-results">
+    <h2>Produtos</h2>
+    <p>A grade de produtos da coleção começa abaixo deste banner.</p>
+  </main>
+</body>
+</html>

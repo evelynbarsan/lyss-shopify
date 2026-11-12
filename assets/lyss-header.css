@@ -54,7 +54,7 @@
 #header-component .lyss-mobile-menu {
   width: 100%;
   justify-content: center;
-  background: rgba(51, 51, 51, 0.05);
+  background: rgba(255, 255, 255, 0.05);
   color: #fff;
 }
 
@@ -105,7 +105,7 @@
   min-height: 82px;
   padding: 0 clamp(1.25rem, 3.5vw, 3.5rem);
   border-top: 3px solid #fdc656;
-  background: rgba(51, 51, 51, 0.05);
+  background: rgba(255, 255, 255, 0.05);
   color: #fff;
 }
 
@@ -178,5 +178,76 @@
   .lyss-preview-header__actions svg {
     width: 20px;
     height: 20px;
+  }
+}
+
+.lyss-catalog-hero {
+  position: relative;
+  display: flex;
+  min-height: var(--catalog-hero-height, 520px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.lyss-catalog-hero__image,
+.lyss-catalog-hero__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lyss-catalog-hero__image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.lyss-catalog-hero__overlay {
+  background:
+    linear-gradient(90deg, rgba(24, 21, 19, 0.34), rgba(24, 21, 19, 0.12) 48%, transparent 82%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 38%);
+}
+
+.lyss-catalog-hero__content {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1440px);
+  margin: auto;
+  padding: calc(var(--header-group-height, 80px) + 4rem) clamp(2.4rem, 8vw, 12rem) 5rem;
+  color: #fff;
+}
+
+.lyss-catalog-hero__content h1 {
+  margin: 0;
+  color: inherit;
+  font-size: clamp(4.8rem, 7vw, 8rem);
+  font-weight: 400;
+  line-height: 1.05;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+}
+
+.lyss-catalog-hero__description {
+  max-width: 56rem;
+  margin-top: 1.6rem;
+  color: inherit;
+  font-size: 1.6rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.28);
+}
+
+@media screen and (max-width: 749px) {
+  .lyss-catalog-hero {
+    min-height: min(var(--catalog-hero-height, 520px), 360px);
+  }
+
+  .lyss-catalog-hero__image {
+    object-position: 68% center;
+  }
+
+  .lyss-catalog-hero__content {
+    padding: calc(var(--header-group-height, 96px) + 2.4rem) 2.4rem 3.2rem;
+  }
+
+  .lyss-catalog-hero__content h1 {
+    font-size: clamp(4.4rem, 12vw, 6rem);
   }
 }

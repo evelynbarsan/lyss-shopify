@@ -1,0 +1,80 @@
+{% liquid
+  assign heading = section.settings.heading | default: 'Produtos'
+  if collection.handle != 'all'
+    assign heading = collection.title
+  endif
+%}
+
+<section
+  class="lyss-catalog-hero"
+  style="--catalog-hero-height: {{ section.settings.height }}px;"
+  aria-labelledby="CatalogHeroHeading-{{ section.id }}"
+>
+  {% if section.settings.image != blank %}
+    {{
+      section.settings.image
+      | image_url: width: 2400
+      | image_tag:
+        class: 'lyss-catalog-hero__image',
+        loading: 'eager',
+        fetchpriority: 'high'
+    }}
+  {% else %}
+    <img
+      class="lyss-catalog-hero__image"
+      src="{{ 'lyss-image-02.webp' | asset_url }}"
+      width="2103"
+      height="748"
+      alt=""
+      loading="eager"
+      fetchpriority="high"
+    >
+  {% endif %}
+
+  <div class="lyss-catalog-hero__overlay" aria-hidden="true"></div>
+  <div class="lyss-catalog-hero__content">
+    <h1 id="CatalogHeroHeading-{{ section.id }}">{{ heading | escape }}</h1>
+    {% if collection.handle != 'all' and collection.description != blank %}
+      <div class="lyss-catalog-hero__description">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner do catálogo",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem de fundo"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Produtos"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Altura do banner",
+      "min": 320,
+      "max": 720,
+      "step": 20,
+      "unit": "px",
+      "default": 520
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner do catálogo"
+    }
+  ]
+}
+{% endschema %}
