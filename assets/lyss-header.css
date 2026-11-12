@@ -14,6 +14,17 @@
   gap: clamp(0.5rem, 1.5vw, 1.5rem);
 }
 
+#header-component .header-actions__action:not(.account-button) .svg-wrapper > svg,
+#header-component .search-action .svg-wrapper > svg {
+  width: 14px;
+  height: 14px;
+}
+
+#header-component .account-button__icon {
+  width: 15px;
+  height: 17px;
+}
+
 #header-component .lyss-header-logo {
   display: inline-flex;
   width: 92px;
@@ -38,8 +49,8 @@
   align-items: center;
   justify-content: center;
   gap: clamp(1.25rem, 3vw, 3rem);
-  font-size: 1.4rem;
-  line-height: 1.5;
+  font-size: 22px;
+  line-height: 1.2;
   white-space: nowrap;
 }
 
@@ -67,17 +78,17 @@
 
 #header-component .lyss-mobile-menu .menu-list__list {
   gap: 1.5rem;
-  padding: 0.25rem 1rem;
+  padding: 0 1rem;
 }
 
 #header-component .lyss-mobile-menu .menu-list__list-item {
-  padding-block: 0.5rem;
+  padding-block: 0;
 }
 
 #header-component .lyss-mobile-menu__link {
   color: inherit;
-  font-size: 1.4rem;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.2;
   text-decoration: none;
 }
 
@@ -161,8 +172,8 @@
 
 .lyss-preview-header__actions svg {
   display: block;
-  width: 22px;
-  height: 22px;
+  width: 14px;
+  height: 14px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -189,6 +200,9 @@
     grid-column: 1 / -1;
     grid-row: 2;
     min-height: 42px;
+    gap: 1.25rem;
+    font-size: 18px;
+    line-height: 1.2;
   }
 
   .lyss-preview-header__actions {
@@ -198,8 +212,8 @@
   }
 
   .lyss-preview-header__actions svg {
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
   }
 }
 
